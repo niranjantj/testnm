@@ -1,0 +1,22 @@
+on:
+  push:
+    branches:
+      - master
+      - dev
+    env:
+      - dev
+      - ops
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: install tower cli
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ansible-tower-cli
+      - name: run deploy job
+        run: |
+          tower-cli config host awx.caa-corp.com
+          tower-cli config username niranjana_murthy
+          tower-cli config password y0VZpZme10yx5P
+          tower-cli job launch --job-template=14 --extra-vars="env=ops" --monitor
