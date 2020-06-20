@@ -19,4 +19,4 @@ jobs:
           tower-cli config host awx.caa-corp.com
           tower-cli config username niranjana_murthy
           tower-cli config password y0VZpZme10yx5P
-          tower-cli job launch --job-template=14 --extra-vars="env=ops" --monitor
+          tower-cli job launch --job-template=14 --extra-vars="env=dev" --monitor
